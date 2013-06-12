@@ -42,3 +42,10 @@ Estuary is designed to combine public data sources to produce another public dat
 Estuary doesn't access social media APIs in real time, so the stream data is always at least a few hours old. Posts might not appear for a day or more after adding an account to a source registry.
 
 The data store isn't a complete archive of all posts. It trades 100% coverage for better performance and API friendliness. Use an archiving service or download from the social-media service itself if a complete archive is needed.
+
+
+## Contact
+
+Estuary is a Measured Voice project. We're developing it to help government social-media writers.
+
+Questions? Love this software? Email us at hi@measuredvoice.com.

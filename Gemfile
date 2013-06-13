@@ -2,7 +2,21 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'sqlite3'
+# Data is stored in a DynamoDB database
+gem 'dynamoid', :github => 'Veraticus/Dynamoid'
+gem 'aws-sdk'
+
+# For the Flickr API
+gem 'flickraw-cached'
+
+# For the Twitter API
+gem 'twitter'
+
+# For the Registry API
+gem 'rest-client'
+
+# Niceties
+gem 'truncate_html', '~> 0.5.1'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -7,8 +7,6 @@ class Account
   field :account_url
   field :tags, :set
   field :active, :boolean
-
-  has_many :posts
   
   index [:service, :id_on_service]
   
@@ -27,5 +25,40 @@ class Account
     if active.nil?
       self.active = true
     end
+  end
+  
+  def service_obj
+    @service_obj ||= Service.find(service)
+  end
+  
+  def service_shortname
+    service_obj.shortname
+  end
+  
+  def service_longname
+    service_obj.longname
+  end
+  
+  def full_display_name
+    "#{name} on #{service_obj.longname}"
+  end
+  
+  def recent_raw_posts
+    service_obj.recent_posts_for_account(self)
+  end
+  
+  def post_fields_for(raw_post)
+    service_obj.post_fields_for(raw_post)
+  end
+  
+  def post_id_for(raw_post)
+    service_obj.post_id_for(raw_post)
+  end
+  
+  def create_post_for(raw_post)
+    fields = post_fields_for(raw_post)
+    fields[:account_id] = id
+    fields[:service] = service
+    post = Post.create(fields)
   end
 end

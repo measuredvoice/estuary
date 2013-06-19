@@ -11,6 +11,7 @@ class Post
   field :image_url
   field :permalink_url
   field :service
+  field :account_id
   field :id_on_service
   
   field :tags,         :set
@@ -23,17 +24,16 @@ class Post
   field :shares,       :integer
   field :metrics_done, :boolean
   
-  belongs_to :account
-
   # Add an index for any set of "where" fields we'll use
   index [:publish_date, :metrics_done]
   index [:service, :id_on_service]
   
   validates :published_at,  :presence => true
   validates :id_on_service, :presence => true
-  validates :service,       :presence => true
+  validates :account_id,    :presence => true
   
   before_save :set_publish_date
+  before_save :set_account_fields
   
   # --- Class methods ---
   
@@ -55,5 +55,22 @@ class Post
   def set_publish_date
     return nil if published_at.nil?
     self.publish_date = published_at.strftime('%F')
+  end
+  
+  def set_account_fields
+    if account_id.present? && service.nil?
+      self.service = account.service
+    end
+  end
+  
+  def account
+    if account_id.present?
+      @account ||= Account.find(account_id)
+    end
+  end
+  
+  def account=(a)
+    @account = a
+    self.account_id = a.id
   end
 end

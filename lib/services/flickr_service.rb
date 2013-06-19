@@ -11,7 +11,7 @@ class FlickrService < Service
     set_flickr_auth
 
     begin
-      flickr.people.getPublicPhotos(:user_id => nsid, :per_page => 500, :extras => "description,owner_name,date_upload")
+      flickr.people.getPublicPhotos(:user_id => account.id_on_service, :per_page => 500, :extras => "description,owner_name,date_upload")
     rescue Exception => e
       logger.info "Can't get photos for Flickr account '#{nsid}': #{e}"
       []
@@ -48,30 +48,26 @@ class FlickrService < Service
       :tags          => registry_account['tags'],
     }
   end
+  
+  def self.post_id_for(flickr_post)
+    flickr_post['id']
+  end
 
-  def self.post_fields_for(flickr_data)
-    self.flickr_data = flickr_data
-    self.id = flickr_data['id']
-    self.title = flickr_data['title']
-    if flickr_data['description'] && flickr_data['description'] != flickr_data['title']
-      self.description = flickr_data['description']
+  def self.post_fields_for(flickr_post)
+    if flickr_post['description'] && flickr_post['description'] != flickr_post['title']
+      post_description = flickr_post['description']
     else
-      self.description = ''
+      post_description = ''
     end
-    self.ownername = flickr_data['ownername']
-    self.uploaded_at = Time.at(flickr_data['dateupload'].to_i)
-  end
 
-  def img_url(options={})
-    FlickRaw.url(flickr_data)
-  end
-
-  def page_url(options={})
-    FlickRaw.url_photopage(flickr_data)
-  end
-
-  def profile_url(options={})
-    FlickRaw.url_profile(flickr_data)
+    {
+      :published_at  => Time.at(flickr_post['dateupload'].to_i),
+      :title         => flickr_post['title'],
+      :description   => post_description,
+      :image_url     => FlickRaw.url(flickr_post),
+      :permalink_url => FlickRaw.url_photopage(flickr_post),
+      :id_on_service => flickr_post['id'],
+    }
   end
 
   # Raw interactions with Flickr
@@ -84,11 +80,6 @@ class FlickrService < Service
   def self.logger
     @logger ||= Logger.new(STDOUT)
   end
-
-  def logger
-    @logger ||= Logger.new(STDOUT)
-  end
-
 end
 
 Service.register(:flickr, FlickrService)

@@ -21,6 +21,6 @@ Dynamoid.configure do |config|
   config.partition_size = 10
   
   # TODO: Profile the application to set read and write throughput properly
-  config.read_capacity = 100
-  config.write_capacity = 20
+  config.read_capacity  = 5
+  config.write_capacity = 5
 end

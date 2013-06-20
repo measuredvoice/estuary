@@ -1,0 +1,56 @@
+html, body {
+  font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+}
+
+.post-item {
+  width: 280px;
+  padding: 10px;
+  margin: 10px;
+  float: left;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  /*-webkit-transition: .15s ease-in;*/
+     /*-moz-transition: .15s ease-in;*/
+          /*transition: .15s ease-in;*/
+}
+
+.post-item:hover {
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.post-item img {
+  max-width: 100%;
+}
+
+.post-item h5 {text-align: center;}
+
+.post-item .description {
+    font-family: 'Vollkorn', georgia, serif;
+}
+
+.post-item .source {
+  font-size: 80%;
+}
+
+.share-buttons div {
+  float:right;
+  margin-left: 10px;
+}
+
+.twitter-share-button {
+  width:56px !important;
+}
+
+#infscr-loading {
+  position: absolute;
+  bottom: -50px;
+}

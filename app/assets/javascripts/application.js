@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.infinitescroll.min
+//= require bootstrap.min
+//= require jquery.inview
 //= require_tree .

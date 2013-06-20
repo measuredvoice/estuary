@@ -1,0 +1,18 @@
+development:
+  adapter: mysql2
+  database: estuary_development
+  encoding: utf8
+  collation: utf8_unicode_ci  
+  host: localhost
+test:
+  adapter: mysql2
+  database: estuary_test
+  encoding: utf8
+  collation: utf8_unicode_ci  
+  host: localhost
+production:
+  adapter: mysql2
+  database: estuary_production
+  encoding: utf8
+  collation: utf8_unicode_ci
+  host: localhost

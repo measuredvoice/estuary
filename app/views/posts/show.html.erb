@@ -1,0 +1,29 @@
+<p><%= @post_count %> posts from <%= @account_count %> social-media accounts</p>
+
+<div class="row" id="post-container">
+<% @posts.each do |post| %>
+<div class="post-item">
+  <a href="<%= post.permalink_url %>"><img src="<%= post.image_url %>"></a>
+  <h5><%= post.title %></h5>
+  <p class="description"><%= truncate_html(post.description, :word_boundary => /\S[\.\?\!]/) %></p>
+  <p class="source">by <a href="<%= post.profile_url %>"><%= post.ownername %></a> on <%= post.published_at.strftime('%B %d') %></p>
+  <div class="share-buttons <%= @show_sharers ? 'with-google-twitter' : '' %>">
+    <% if @show_sharers %>
+    <div class="tweetbutton">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= post.permalink_url %>" data-text="Check out this post from <%= post.ownername %>" data-via="usagov" data-count="none">Tweet</a>
+    </div>
+    <% end -%>
+    <div class="pinitbutton">
+      <a data-pin-config="none" href="//pinterest.com/pin/create/button/?url=<%= post.permalink_url %>&amp;media=<%= post.image_url %>&amp;description=Check out this post from <%= post.ownername %>" data-pin-do="buttonPin" ><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>
+    </div>
+    <% if @show_sharers %>
+    <div class="plusonebutton">
+      <div class="g-plusone" data-size="medium" data-annotation="none" data-href="<%= post.permalink_url %>"></div>
+    </div>
+    <% end -%>
+  </div>
+</div>
+<% end %>
+
+</div> <!-- post-container -->
+

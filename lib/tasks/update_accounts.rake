@@ -33,14 +33,13 @@ namespace :app do
         
     # Deactivate missing accounts
     puts "Checking for deactivated accounts..."
-    Account.all(:batch_size => 100).each do |account|
+    Account.all.each do |account|
       puts "  account #{account.id_on_service} on #{account.service}..."
       unless still_active[account.id]
         puts "    is no longer active."
         account.active = false
         account.save
       end
-      sleep 0.01
     end
   end
 end

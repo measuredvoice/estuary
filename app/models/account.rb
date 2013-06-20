@@ -1,24 +1,39 @@
-class Account
-  include Dynamoid::Document
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  service         :string(255)
+#  name_on_service :string(255)
+#  id_on_service   :string(255)
+#  url             :string(255)
+#  tags            :text
+#  active          :boolean
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 
-  field :name
-  field :service
-  field :id_on_service
-  field :account_url
-  field :tags, :set
-  field :active, :boolean
-  
-  index [:service, :id_on_service]
+class Account < ActiveRecord::Base
+  attr_accessible :name, :service, :id_on_service, :url, :tags, :active
   
   validates :service, :presence => true
   validates :id_on_service, :presence => true
-  validates :account_url, :presence => true
+  validates :url, :presence => true
   
+  serialize :tags, Array
+  
+  has_many :posts
+
   before_save :set_active_flag
   
   def self.find_by_key(service, id_on_service)
     return nil if service.nil? || id_on_service.nil?
     where(:service => service, :id_on_service => id_on_service).first
+  end
+  
+  def self.active
+    self.where(:active => true)
   end
   
   def set_active_flag
@@ -56,9 +71,6 @@ class Account
   end
   
   def create_post_for(raw_post)
-    fields = post_fields_for(raw_post)
-    fields[:account_id] = id
-    fields[:service] = service
-    post = Post.create(fields)
+    posts.create(post_fields_for(raw_post))
   end
 end

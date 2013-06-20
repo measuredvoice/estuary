@@ -44,7 +44,7 @@ class FlickrService < Service
       :name          => registry_account['organization'],
       :service       => shortname,
       :id_on_service => id_on_service,
-      :account_url   => registry_account['service_url'],
+      :url           => registry_account['service_url'],
       :tags          => registry_account['tags'],
     }
   end

@@ -2,9 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-# Data is stored in a DynamoDB database
-gem 'dynamoid', :github => 'Veraticus/Dynamoid'
-gem 'aws-sdk'
+gem 'mysql2'
 
 # For the Flickr API
 gem 'flickraw-cached'
@@ -18,6 +16,8 @@ gem 'rest-client'
 # Niceties
 gem 'truncate_html', '~> 0.5.1'
 
+gem 'jquery-rails'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -30,7 +30,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :development do
+  gem 'annotate', "~> 2.5.0"
+end
 
 # Use unicorn as the app server
 # gem 'unicorn'

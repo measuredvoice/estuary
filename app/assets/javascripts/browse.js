@@ -1,7 +1,7 @@
 $(function(){
   var $container = $('#post-container');
 
-  var showShareres = function(event, visible){
+  var showSharers = function(event, visible){
     var $target = $(event.target);
     var $oItem = $target.find('.g-plusone').eq(0);
     if (visible == true) {
@@ -30,15 +30,15 @@ $(function(){
     $items.animate({opacity: 1});
 
     // add sharer show event listener
-    $items.find('.share-buttons.with-google-twitter').one('inview', showShareres);
+    $items.find('.share-buttons.with-google-twitter').one('inview', showSharers);
     $(window).scroll();
   });
 
   // setup infinite scroll
   $container.infinitescroll({
-    // debug                 : true,
+    debug                 : true,
     navSelector           : 'div.pagination',
-    nextSelector          : '.pagination a.next-page',
+    nextSelector          : '.pagination .next a',
     itemSelector          : 'div.post-item',
     pixelsFromNavToBottom : 50,
     bufferPx: 800,
@@ -61,7 +61,7 @@ $(function(){
         $container.masonry( 'appended', $newElems, true );
 
         // add sharer show event listener
-        this.find('.share-buttons.share-buttons.with-google-twitter').one('inview', showShareres);
+        this.find('.share-buttons.share-buttons.with-google-twitter').one('inview', showSharers);
         $(window).scroll();
       });
     }

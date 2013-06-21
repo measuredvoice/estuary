@@ -1,4 +1,4 @@
-<p><%= @post_count %> posts from <%= @account_count %> social-media accounts</p>
+<p><%= @post_count %> posts from <%= @account_count %> social media accounts</p>
 
 <div class="row" id="post-container">
 <% @posts.each do |post| %>
@@ -27,3 +27,8 @@
 
 </div> <!-- post-container -->
 
+<div class="span6 offset3">
+<div class="pagination">
+  <%= paginate @posts %>
+</div>
+</div>

@@ -36,6 +36,10 @@ class Post < ActiveRecord::Base
     order('published_at DESC').limit(20)
   end
   
+  def self.recent
+    order('published_at DESC')
+  end
+  
   # --- Instance methods ---
     
   def set_service

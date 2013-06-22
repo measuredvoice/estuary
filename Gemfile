@@ -10,6 +10,10 @@ gem 'flickraw-cached'
 # For the Twitter API
 gem 'twitter'
 
+# For the Youtube API
+gem 'google-api-client', :require => 'google/api_client'
+gem 'youtube_it' # See https://github.com/kylejginavan/youtube_it
+
 # For the Registry API
 gem 'rest-client'
 

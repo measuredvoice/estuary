@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   layout 'browse'
 
   def show
-    @posts = Post.recent.page(params[:page])
+    @posts = Post.recent.where('image_url IS NOT NULL').page(params[:page])
 
     @post_count = Post.count
     @account_count = Account.active.count

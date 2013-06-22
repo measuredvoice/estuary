@@ -8,17 +8,17 @@ namespace :app do
       puts "Checking #{service.longname} accounts..."
       registry.accounts(:service_id => service.shortname).each do |a|
         puts "  account #{a['account']}..."
-        unless account_id = service.account_id_for(a)
-          puts "    Can't find a service account ID. Skipping..."
-          next
-        end
-        
-        if account = Account.find_by_key(service.shortname, account_id)
+        if account = Account.find_by_url(a['service_url'])
           puts "    found #{account.id}"
           account.active = true
         else
-          account = Account.new(service.account_fields_for(a))
-          puts "    creating..."
+          if fields = service.account_fields_for(a)
+            account = Account.new(fields)
+            puts "    creating..."
+          else
+            puts "    no account found."
+            next
+          end
         end
         
         if account.save

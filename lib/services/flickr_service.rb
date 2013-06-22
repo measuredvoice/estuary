@@ -13,7 +13,7 @@ class FlickrService < Service
     begin
       flickr.people.getPublicPhotos(:user_id => account.id_on_service, :per_page => 500, :extras => "description,owner_name,date_upload")
     rescue Exception => e
-      logger.info "Can't get photos for Flickr account '#{nsid}': #{e}"
+      logger.info "Can't get photos for Flickr account '#{account.id_on_service}': #{e}"
       []
     end
   end
@@ -37,7 +37,7 @@ class FlickrService < Service
     id_on_service = account_id_for(registry_account)
     unless id_on_service =~ /@/ 
       logger.info "Flickr account #{registry_account['service_url']} doesn't have a proper NSID."
-      return {} 
+      return nil 
     end
     
     {

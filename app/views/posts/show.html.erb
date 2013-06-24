@@ -7,6 +7,7 @@
   <h5><%= post.title %></h5>
   <p class="description"><%= truncate_html(post.description, :word_boundary => /\S[\.\?\!]/) %></p>
   <p class="source">by <a href="<%= post.profile_url %>"><%= post.ownername %></a> on <%= post.published_at.strftime('%B %d') %></p>
+  <div class="pull-left"><i class="icon-<%= post.service %> icon-muted icon-large" title="on <%= post.account.service_longname %>"></i></div>
   <div class="share-buttons <%= @show_sharers ? 'with-google-twitter' : '' %>">
     <% if @show_sharers %>
     <div class="tweetbutton">

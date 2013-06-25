@@ -53,6 +53,6 @@ class Post < ActiveRecord::Base
   end
     
   def ownername
-    account.full_display_name
+    account.name
   end
 end

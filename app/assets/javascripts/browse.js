@@ -27,7 +27,7 @@ $(function(){
     });
 
     // display the items
-    $items.animate({opacity: 1});
+    $items.animate({opacity: 1}, 100);
 
     // add sharer show event listener
     $items.find('.share-buttons.with-google-twitter').one('inview', showSharers);
@@ -36,7 +36,7 @@ $(function(){
 
   // setup infinite scroll
   $container.infinitescroll({
-    debug                 : true,
+    debug                 : false,
     navSelector           : 'div.pagination',
     nextSelector          : '.pagination .next a',
     itemSelector          : 'div.post-item',
@@ -52,16 +52,20 @@ $(function(){
       // hide new items while they are loading
       var $newElems = $( newElements ).css({ opacity: 0 });
 
+      // render embedded tweets
+      twttr.widgets.load();
+
       // ensure that images load before adding to masonry layout
       $newElems.imagesLoaded(function(){
         // show new elems now that they're ready
-        $newElems.animate({ opacity: 1 });
+        $newElems.animate({ opacity: 1 }, 150);
 
         // apply masonry
         $container.masonry( 'appended', $newElems, true );
 
         // add sharer show event listener
         this.find('.share-buttons.share-buttons.with-google-twitter').one('inview', showSharers);
+        
         $(window).scroll();
       });
     }

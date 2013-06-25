@@ -54,3 +54,24 @@ html, body {
   position: absolute;
   bottom: -50px;
 }
+
+div.post-image-youtube {
+  position: relative;
+}
+
+i.icon-play-sign {
+  display: none;
+}
+
+.post-image-youtube i {
+  position: absolute;
+  display: block;
+  top: 50px;
+  left: 110px;
+  color: #ccc;
+}
+
+.post-image-youtube a:hover i {
+  color: #fff;
+  text-decoration: none;
+}

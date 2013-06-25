@@ -3,11 +3,21 @@
 <div class="row" id="post-container">
 <% @posts.each do |post| %>
 <div class="post-item">
-  <a href="<%= post.permalink_url %>"><img src="<%= post.image_url %>"></a>
+  <div class="post-image-<%= post.service %>">
+    <a href="<%= post.permalink_url %>" title="view on <%= post.account.service_longname %>" target="_new"><img src="<%= post.image_url %>">
+    <% if post.service == 'youtube' %>
+      <i class="icon-play-sign icon-4x"></i>
+    <% end %>
+    </a>
+  </div>
+  
   <h5><%= post.title %></h5>
+  
   <p class="description"><%= truncate_html(post.description, :word_boundary => /\S[\.\?\!]/) %></p>
-  <p class="source">by <a href="<%= post.profile_url %>"><%= post.ownername %></a> on <%= post.published_at.strftime('%B %d') %></p>
-  <div class="pull-left"><i class="icon-<%= post.service %> icon-muted icon-large" title="on <%= post.account.service_longname %>"></i></div>
+
+  <p class="source"><i class="icon-<%= post.service %> icon-muted icon-large" title="on <%= post.account.service_longname %>"></i> by <a href="<%= post.profile_url %>"><%= post.ownername %></a> on <%= post.published_at.strftime('%B %d') %></p>
+  
+  
   <div class="share-buttons <%= @show_sharers ? 'with-google-twitter' : '' %>">
     <% if @show_sharers %>
     <div class="tweetbutton">

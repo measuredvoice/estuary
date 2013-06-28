@@ -42,4 +42,4 @@ group :development do
 end
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'

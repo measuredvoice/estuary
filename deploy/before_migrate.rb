@@ -7,6 +7,6 @@ current_release = release_path
   
 execute "rake assets:precompile" do
   cwd current_release
-  command "bundle exec rake assets:precompile"
+  command "bundle exec rake assets:precompile --trace"
   environment "RAILS_ENV" => rails_env
 end

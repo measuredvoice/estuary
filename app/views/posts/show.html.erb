@@ -6,7 +6,7 @@
   <div class="post-image-<%= post.service %>">
     <a href="<%= post.permalink_url %>" title="view on <%= post.account.service_longname %>" target="_new"><img src="<%= post.image_url %>">
     <% if post.service == 'youtube' %>
-      <i class="icon-play-sign icon-4x"></i>
+      <i class="icon-youtube-play icon-4x"></i>
     <% end %>
     </a>
   </div>
@@ -15,7 +15,7 @@
   
   <p class="description"><%= truncate_html(post.description, :word_boundary => /\S[\.\?\!]/) %></p>
 
-  <p class="source"><i class="icon-<%= post.service %> icon-muted icon-large" title="on <%= post.account.service_longname %>"></i> by <a href="<%= post.profile_url %>"><%= post.ownername %></a> on <%= post.published_at.strftime('%B %d') %></p>
+  <p class="source"><i class="icon-<%= post.service %> <%= post.service %>-color icon-muted icon-large" title="on <%= post.account.service_longname %>"></i> by <a href="<%= post.profile_url %>"><%= post.ownername %></a> on <%= post.published_at.strftime('%B %d') %></p>
   
   
   <div class="share-buttons <%= @show_sharers ? 'with-google-twitter' : '' %>">

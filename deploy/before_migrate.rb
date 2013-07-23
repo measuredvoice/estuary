@@ -4,17 +4,11 @@ Chef::Log.info("Symlinking #{release_path}/public/assets to #{new_resource.deplo
 
 # shared assets hack for opsworks -adh
 shared_assets = "#{new_resource.deploy_to}/shared/assets"
-#if File.exist?(shared_assets) && File.directory?(shared_assets)
-#    Chef::Log.info("Directory #{shared_assets} exists, moving on...")
-#else
-#    Chef::Log.info("creating #{shared_assets} directory...")
-#    `mkdir -p #{shared_assets}`
-#end
 
 directory shared_assets do
-   owner "deploy"
-   group "nginx"
-   mode 00755
+   owner deploy[:user]
+   group deploy[:group]
+   mode 00770
    action :create 
 end
  

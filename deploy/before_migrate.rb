@@ -12,7 +12,7 @@ shared_assets = "#{new_resource.deploy_to}/shared/assets"
 #end
 
 directory shared_assets do
-   owber "deploy"
+   owner "deploy"
    group "nginx"
    mode 00755
    action :create 

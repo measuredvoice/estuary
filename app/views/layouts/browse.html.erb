@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Browse Government Social Media Posts – by Measured Voice</title>
-    <link href="http://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://use.typekit.com/bvc1jkf.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <%= csrf_meta_tags %>
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -19,18 +19,25 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="/">Estuary</a>
-          <div class="nav-collapse collapse">
+          <a class="mv_logo" href="http://measuredvoice.com">Measured Voice</a>
+          <span class="brand">GovPics</span>
+          <!-- <a class="brand" href="/">Estuary</a> -->
+          <!-- <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="/posts">Browse</a></li>
             </ul>
-          </div>
+          </div> -->
         </div>
      </div>
     </div>
     <div class="container">
+      <p>The latest photos and videos from official U.S. Government Twitter, Flickr, and YouTube accounts.</p>
+      <p>Account data from the <a href="http://registry.usa.gov/">HowTo.gov Social Media Registry API</a>.</p>
+      <p>Powered by Amazon Web Services.</p>
+      <p>Built by <a href="http://measuredvoice.com">Measured Voice</a>.</p>
+      <hr>
 
-<%= yield %>
+      <%= yield %>
 
     </div>
     <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>

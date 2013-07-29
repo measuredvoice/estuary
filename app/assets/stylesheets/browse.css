@@ -1,40 +1,60 @@
-html, body {
-  font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+  html, body {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+a.mv_logo {
+  display:block;
+  width:132px;
+  height:41px;
+  background: url('/assets/MeasuredVoice_logo_41-high.png');
+  text-indent: -9000px;
+  float:left;
+  margin-right:25px;
+}
+
+.navbar-inner {
+  background:#FFF;
+  border:none;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+  -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4);
+     -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4);  
 }
 
 .post-item {
-  width: 280px;
-  padding: 10px;
-  margin: 10px;
+  width: 260px;
+  padding: 15px 15px 10px 15px;
+  margin: 5px;
   float: left;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-  -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4);
-     -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+  -webkit-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.4);
+     -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0px 1px rgba(0, 0, 0, 0.4);
   -webkit-transition: .15s ease-in;
      -moz-transition: .15s ease-in;
           transition: .15s ease-in;
 }
 
 .post-item:hover {
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .post-item img {
   max-width: 100%;
 }
 
-.post-item h5 {text-align: center;}
-
 .post-item .description {
-    font-family: 'Vollkorn', georgia, serif;
+    /*font-family: 'Vollkorn', georgia, serif;*/
 }
 
 .post-item .source {
@@ -83,7 +103,7 @@ i.icon-play-sign {
   position: absolute;
   display: block;
   top: 50px;
-  left: 111px;
+  left: 101px;
   color: #6E0610;
 }
 

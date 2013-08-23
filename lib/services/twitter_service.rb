@@ -87,11 +87,9 @@ class TwitterService < Service
 end
 
 Twitter.configure do |config|
-  config.consumer_key = ENV['TWITTER_CLIENT_KEY']
+  config.consumer_key    = ENV['TWITTER_CLIENT_KEY']
   config.consumer_secret = ENV['TWITTER_CLIENT_SECRET']
-  # TODO: Remove user authentication once the Twitter gem supports it
-  config.oauth_token = ENV['TWITTER_OAUTH_TOKEN']
-  config.oauth_token_secret = ENV['TWITTER_OAUTH_SECRET']
+  config.bearer_token    = Twitter.token
 end
 
 Service.register(:twitter, TwitterService)
